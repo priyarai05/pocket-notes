@@ -100,11 +100,30 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 70vw;
     height: 100%;
+    background-color: #DAE5F5;
 }
 
 .Homepage{
     text-align: center;   
 }
+.hide{
+    display: none;
+}
 
+@media (max-width: 568px) {
+    .left{
+    position: absolute;
+        width: 100%;
+        z-index: 1;
+    
+    } 
+    .right{
+        width: 100%;
+    }
+ 
+    .addnotes{
+        left: 80%;
+    } 
+}

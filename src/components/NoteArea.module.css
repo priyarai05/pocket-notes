@@ -89,3 +89,13 @@
     bottom: 10px;
     font-weight: 600;
 }
+
+.backArrow{
+    display: none;
+}
+
+@media (max-width: 568px) {
+    .backArrow{
+        display: block;
+    }
+}

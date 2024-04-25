@@ -6,6 +6,7 @@ import Modal from './Modal';
 import NoteArea from './NoteArea';
 
 function Homepage() {
+    
     const localItems = () => {
         if(localStorage.getItem('notes')){
             return JSON.parse(localStorage.getItem('notes'))
@@ -14,10 +15,11 @@ function Homepage() {
         }
     }
     const [notes, setNotes] = useState(localItems())
-    // const [notes, setNotes] = useState([])
     const [notesGroup, setNotesGroup] = useState({groupName:'',colorIndex:''})
     const [showModal, setShowModal] = useState(false)
     const [selectedNote, setSelectedNote] = useState('')
+    const [isActive, setIsActive] = useState(false)
+    const [isLeftVisible, setIsLeftVisible] = useState(true)
 
     const colors = [
         "#B38BFA",
@@ -34,8 +36,6 @@ function Homepage() {
         }
     }, [notes])
 
-    
-
     const handleCreate = () => {
         if(notesGroup.groupName !== '' && notesGroup.colorIndex !== ''){
             setNotes([...notes, notesGroup])
@@ -50,11 +50,34 @@ function Homepage() {
     
     const openNote = (index) => {
         setSelectedNote(notes[index])
+        if (window.innerWidth <= 568) {
+            setIsLeftVisible(false);
+        }
+        setIsActive(true)
+    }
+    useEffect(() => {
+        function handleResize() {
+            if (window.innerWidth <= 568) {
+                setIsLeftVisible(true);
+                // setIsActive(false);
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const closePage = () => {
+        setIsLeftVisible(true);
+        // setIsActive(false)
     }
 
   return (
     <div className={styles.page}>
-        <div className={styles.left}>
+        {/* `${width <= "500px" ? (isActive ? styles.hide : styles.left) : styles.left}` */}
+        {/* `width <= "500px" ? (isActive ? ${styles.hide} : ${styles.left}) : ${styles.left}` */}
+        <div className={isLeftVisible ? styles.left : `${styles.left} ${styles.hide}`}>
             <h2 className={styles.heading}>Pocket Notes</h2>
             <div>
                 {
@@ -62,9 +85,6 @@ function Homepage() {
                         return (
                             <div key={index} className={styles.notes} onClick={() => openNote(index)}>
                                 <div className={styles.shortName} style={{backgroundColor: colors[note.colorIndex]}}>
-                                {/* {note.split(' ').map((word) => {
-                                    return word.charAt(0).toUpperCase()
-                                })} */}
                                 {
                                     note.groupName.split(' ')[0].charAt(0).toUpperCase() + note.groupName.split(' ')[note.groupName.split(' ').length - 1].charAt(0).toUpperCase()
                                 }
@@ -79,9 +99,11 @@ function Homepage() {
                 <IoMdAddCircle size={70} className={styles.addnotes} onClick={() => setShowModal(true)}/>
             {/* </div>     */}
         </div>
-        <div className={styles.right}>
+        {/* `${width <= "500px" ? (isActive ? styles.right: styles.hide) : styles.right}` */}
+        {/* `width <= "500px" ? (isActive ? ${styles.right}: ${styles.hide}) : ${styles.right}` */}
+        {/* <div className={styles.right}>
             { selectedNote ?
-            ( <NoteArea selectedNote={selectedNote} colors={colors} /> ) 
+            ( <NoteArea selectedNote={selectedNote} colors={colors} closePage={closePage}/> ) 
             :
             (
             <div className={styles.centerPage}>
@@ -93,8 +115,27 @@ function Homepage() {
             </div>
             )
             }
-        </div>
-        {showModal && <Modal colors={colors} notesGroup={notesGroup} setNotesGroup={setNotesGroup} colorPicker={colorPicker} handleCreate={handleCreate}/>}
+        </div> */}
+        {selectedNote && (
+                <div className={isActive ? styles.right : styles.hide}>
+                    <NoteArea selectedNote={selectedNote} colors={colors} closePage={closePage} />
+                </div>
+            )}
+            {!selectedNote && (
+                
+                <div className={styles.centerPage}>
+                    <div className={styles.Homepage}>
+                        <img src={home_image} alt="" />
+                        <h1>Pocket Notes</h1>
+                        <p>
+                            Send and receive messages without keeping your phone online. <br /> Use
+                            Pocket Notes on up to 4 linked devices and 1 mobile phone
+                        </p>
+                    </div>
+                </div>
+                
+            )}
+        {showModal && <Modal colors={colors} notesGroup={notesGroup} setNotesGroup={setNotesGroup} colorPicker={colorPicker} handleCreate={handleCreate} setShowModal={setShowModal} />}
     </div>
   )
 }

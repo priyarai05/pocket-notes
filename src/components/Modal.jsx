@@ -1,11 +1,12 @@
 import {React} from 'react'
 import styles from './Modal.module.css'
 
-function Modal({colors, notesGroup, setNotesGroup, handleCreate, colorPicker}) {
+function Modal({colors, notesGroup, setNotesGroup, handleCreate, colorPicker, setShowModal}) {
     
     
   return (
-    <div className={styles.modalBackground}>
+    <>
+        <div className={styles.modalBackground} onClick={() => setShowModal(false)}></div>
         <div className={styles.modalContainer}>
             <h1>Create New group</h1>
             <div className={styles.group}>
@@ -29,7 +30,7 @@ function Modal({colors, notesGroup, setNotesGroup, handleCreate, colorPicker}) {
                 <button onClick={handleCreate} className={styles.createButton}>Create</button>
             </div>
         </div>
-    </div>
+    </>
   )
 }
 

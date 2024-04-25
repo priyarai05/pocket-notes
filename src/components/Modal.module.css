@@ -3,20 +3,19 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .modalContainer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
-    width: 40%;
-    /* height: 30%; */
+    width: 50%;
     border: 1px solid #cccccc;
     border-radius: 10px;
     padding: 2rem 1rem 1rem 2rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 .group{
     margin: 1rem 0;
@@ -62,4 +61,25 @@
     padding: 0.5rem 2rem;
     border-radius: 5px;
     float: right;
+}
+
+@media (max-width: 568px) {
+    .modalBackground{
+        z-index: 1;
+    }
+    .modalContainer{
+        width: 80%;
+        font-size: 14px;
+        z-index: 1;
+    }
+    .nameLabel{
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    .color{
+        width: 1rem;
+        height: 1rem;
+        border-radius: 25px;
+        cursor: pointer;
+    }
 }

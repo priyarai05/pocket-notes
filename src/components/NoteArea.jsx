@@ -1,9 +1,10 @@
 import {React, useState, useEffect, useRef} from 'react'
 import { IoSend } from "react-icons/io5";
 import { BsDot } from "react-icons/bs";
-import styles from './NoteArea.module.css'
+import { IoArrowBack } from "react-icons/io5";
+import styles from './NoteArea.module.css';
 
-function NoteArea({selectedNote, colors}) {
+function NoteArea({selectedNote, colors, closePage}) {
 
     const getNotesHist = () =>{
         if(localStorage.getItem("noteBody")){
@@ -72,6 +73,9 @@ function NoteArea({selectedNote, colors}) {
     <div className={styles.notesPage}>
         <div className={styles.header}>
             <div className={styles.notesPageHeader}>
+                <div className={styles.notesPageHeaderLeft}>
+                    <IoArrowBack onClick={closePage} className={styles.backArrow} />
+                </div>
                 <div className={styles.shortName} style={{backgroundColor: colors[selectedNote.colorIndex]}}>
                 {
                     selectedNote.groupName.split(' ')[0].charAt(0).toUpperCase() + selectedNote.groupName.split(' ')[selectedNote.groupName.split(' ').length - 1].charAt(0).toUpperCase()
