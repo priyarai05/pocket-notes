@@ -1,0 +1,91 @@
+.notesPage{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.header{
+    background-color: #16008B;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 1rem;
+    margin-top: 0;
+}
+
+.notesPageHeader{
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.shortName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    color: #ffffff;
+}
+
+.footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 1rem;
+    background-color: #16008B;
+    border-radius: 0 0 10px 10px;
+}
+
+.input{
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 20vh;
+    resize: none;
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 20px;
+}
+
+.send{
+    position: absolute;
+    font-size: 50px;
+    padding: 10px;
+    right: 20px;
+    bottom: 20px;
+}
+
+.notebody{
+    position: relative;
+    height: 60%;
+    overflow-y: scroll;
+}
+
+.noteTiles{
+    position: relative;
+    background-color: #ffffff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem;
+    margin-bottom: 10px;
+}
+
+.noteTilesText{
+    margin-bottom: 1rem;
+}
+
+.noteTilesFooter{
+    display: flex;
+    font-size: 14px;
+    color: #353535;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-weight: 600;
+}

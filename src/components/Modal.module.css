@@ -1,0 +1,65 @@
+.modalBackground{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContainer{
+    background-color: white;
+    width: 40%;
+    /* height: 30%; */
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    padding: 2rem 1rem 1rem 2rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+.group{
+    margin: 1rem 0;
+}
+.nameLabel{
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.nameInput{
+    all: unset;
+    width: 50%;
+    border: 2px solid #cccccc;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    /* margin-top: 0.5rem;
+    margin-bottom: 1rem; */
+    margin-left: 1rem;
+}
+
+.colorPicker{
+    margin: 1.5rem 0;
+    display: flex;
+}
+
+.colorList{
+    display: flex;
+    margin-left: 1rem;
+    gap: 10px;
+}
+
+.color{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.createButton{
+    all: unset;
+    background-color: #001F8B;
+    color: white;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    float: right;
+}
