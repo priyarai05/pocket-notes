@@ -122,7 +122,9 @@
     .right{
         width: 100%;
     }
- 
+    .centerPage{
+        display: none;
+    }
     .addnotes{
         left: 80%;
     } 

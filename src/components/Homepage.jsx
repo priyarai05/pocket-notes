@@ -75,8 +75,6 @@ function Homepage() {
 
   return (
     <div className={styles.page}>
-        {/* `${width <= "500px" ? (isActive ? styles.hide : styles.left) : styles.left}` */}
-        {/* `width <= "500px" ? (isActive ? ${styles.hide} : ${styles.left}) : ${styles.left}` */}
         <div className={isLeftVisible ? styles.left : `${styles.left} ${styles.hide}`}>
             <h2 className={styles.heading}>Pocket Notes</h2>
             <div>
@@ -95,34 +93,14 @@ function Homepage() {
                     })
                 }
             </div>
-            {/* <div className={styles.addIcon}> */}
-                <IoMdAddCircle size={70} className={styles.addnotes} onClick={() => setShowModal(true)}/>
-            {/* </div>     */}
+            <IoMdAddCircle size={70} className={styles.addnotes} onClick={() => setShowModal(true)}/>
         </div>
-        {/* `${width <= "500px" ? (isActive ? styles.right: styles.hide) : styles.right}` */}
-        {/* `width <= "500px" ? (isActive ? ${styles.right}: ${styles.hide}) : ${styles.right}` */}
-        {/* <div className={styles.right}>
-            { selectedNote ?
-            ( <NoteArea selectedNote={selectedNote} colors={colors} closePage={closePage}/> ) 
-            :
-            (
-            <div className={styles.centerPage}>
-            <div className={styles.Homepage}>
-                <img src={home_image} alt="" />
-                <h1>Pocket Notes</h1>
-                <p>Send and receive messages without keeping your phone online. <br /> Use Pocket Notes on up to 4 linked devices and 1 mobile phone</p>
-            </div>
-            </div>
-            )
-            }
-        </div> */}
         {selectedNote && (
                 <div className={isActive ? styles.right : styles.hide}>
                     <NoteArea selectedNote={selectedNote} colors={colors} closePage={closePage} />
                 </div>
             )}
             {!selectedNote && (
-                
                 <div className={styles.centerPage}>
                     <div className={styles.Homepage}>
                         <img src={home_image} alt="" />
