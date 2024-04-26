@@ -18,7 +18,7 @@ function NoteArea({selectedNote, colors, closePage}) {
     const [notesDesc, setNotesDesc] = useState({text:'', date:'', time:''})
     
     const handleSend = () => {
-        if(notesDesc){
+        if(notesDesc.text){
             const newData = { text: notesDesc.text, date:formatDate(), time: formatTime() };
             setNoteBody((prevNotes) => ({
                 ...prevNotes,
